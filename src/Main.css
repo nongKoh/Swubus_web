@@ -1,0 +1,78 @@
+@font-face{
+    font-family: 'SWU';
+    src: local('SWU'), url(./Srinakharinwirot-Regular.ttf) format('truetype');
+  }
+  .BodyMain{
+    min-width: fit-content;
+    font-family: 'SWU';
+    flex-direction: row;
+  }
+  .HeadMain{
+    display: flex;
+    font-family: 'SWU';
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+    
+  }
+  .BackHead{
+    background-image: url(./BackWebMain.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    font-family: 'SWU';
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    min-width: fit-content;
+    min-height: fit-content;
+  }
+  .LoginHead{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .UserProfile{
+    display: flex;
+    border: solid;
+    border-radius: 3px;
+  }
+  .Bar{
+    font-family:'SWU';
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-around;
+    justify-content: space-between;
+    background-color: #f4b1df;
+  }
+  /* .About{
+    margin-top: 50px;
+    min-height: 120px;
+    background-color:  #fddcf2ce;
+    border-top: thistle solid;
+    display:flex;
+    flex-direction: row;
+    align-content: space-around;
+  } */
+
+  .Credit{
+    display: flex;
+    min-width: 5000px;
+    /* min-height: 120px; */
+    min-width: fit-content;
+    font-family: 'SWU';
+    text-align: 'center';
+
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top: thistle solid;
+    background-color:  #fdeff9;
+    align-items: 'center'
+  }
