@@ -71,10 +71,10 @@ class FormD extends Component {
   }
 
   onSubmit = async e => {
-    console.log(this.state.formState);
+    // console.log(this.state.formState);
     let data = this.state.formState;
-    axios
-      .post(
+    try {
+      let res1 = await axios.post(
         `${env.urltest}/driver/create`,
         {
           Driver_name: data.Driver_name,
@@ -98,16 +98,57 @@ class FormD extends Component {
             "Access-Control-Allow-Origin": "*"
           }
         }
-      )
-      .then(res => {
-        if(res.status === 200){
-            alert("Add สำเร็จ")
-            // this.props.getapi()
-        }
-      })
-      .catch(err => {
-        console.log(err);
+      );
+      // console.log(res1.data[0].Driverid)
+      let res2 = await axios.post(`${env.urltest}/track/create`, {
+        Driverid: res1.data[0].Driverid,
+        Route: 0,
+        Status: 0,
+        latitude: 0,
+        longitude: 0
       });
+      // console.log(res2)
+      if (res1.status === 200 && res2.status === 200) {
+        alert("Add สำเร็จ");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    // axios
+    // .post(
+    //   `${env.urltest}/driver/create`,
+    //   {
+    //     Driver_name: data.Driver_name,
+    //     Driver_lastname: data.Driver_lastname,
+    //     Username: data.Username,
+    //     Password: data.Password,
+    //     Age: data.Age,
+    //     Date: data.Date,
+    //     IDcard: data.IDcard,
+    //     Address: data.Address,
+    //     Sub_district: data.Sub_district,
+    //     District: data.District,
+    //     Province: data.Province,
+    //     Post: data.Post,
+    //     Mobile: data.Mobile,
+    //     E_mail: data.E_mail,
+    //     Disease: data.Disease
+    //   },
+    //   {
+    //     headers: {
+    //       "Access-Control-Allow-Origin": "*"
+    //     }
+    //   }
+    // )
+    //   .then(res => {
+    //     if(res.status === 200){
+    //         alert("Add สำเร็จ")
+    //         // this.props.getapi()
+    //     }
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   };
 
   render() {

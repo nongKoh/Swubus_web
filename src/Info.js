@@ -43,16 +43,26 @@ class ModalEdit extends React.Component {
 }
 
 class ModalDelete extends React.Component {
-    onDelete = () => {
+    onDelete = async () => {
         // console.log(this.props.data.Driverid)
         let id = this.props.data.Driverid
-        axios.delete(`${env.urltest}/driver/delete/${id}`)
-        .then(res => {
+        try {
+        let res1  = await axios.delete(`${env.urltest}/driver/delete/${id}`)
+        let res2 = await axios.delete(`${env.urltest}/track/delete/${id}`)
+        if(res1.status === 200 && res2.status === 200){
             alert('ลบเรียบร้อย')
-        })
-        .catch(err => {
+        }
+        }
+        catch (err) {
             console.log(err)
-        })
+        }   
+        // axios.delete(`${env.urltest}/driver/delete/${id}`)
+        // .then(res => {
+        //     alert('ลบเรียบร้อย')
+        // })
+        // .catch(err => {
+        //     console.log(err)
+        // })
     }
     render() {
         return (
@@ -152,9 +162,11 @@ class Info extends React.Component {
     }
     getapi = async () => {
        await axios.get(`${env.urltest}/driver`)
-            .then(res => {
+            .then(res => { 
+                // console.log(res)
                 this.setState({ person: res.data })
             })
+           
     }
     getdata = () => {
         const person = this.state.person
